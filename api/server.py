@@ -84,10 +84,6 @@ def compute_alerts(building_id: str):
     result = alert_engine.compute_alerts(repo, building_id)
     return result
 
-@app.get("/alerts/{building_id}")
-def get_alerts(building_id: str):
-    return repo.get_alerts_for_building(building_id)
-
 @app.get("/graph/sensor/{building_id}")
 def get_sensor_graph(building_id: str, deviceId: str = None, smooth: bool = False):
 
