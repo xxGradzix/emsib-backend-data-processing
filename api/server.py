@@ -16,8 +16,6 @@ analyzer = EnergyAnalyzer()
 reporter = ReportGenerator()
 forecaster = EnergyForecaster()
 alerts = AlertManager()
-repo = MongoRepository()
-alert_engine = AlertManager()
 graph_gen = GraphGenerator()
 
 @app.get("/health")
@@ -81,7 +79,7 @@ def get_alerts(building_id: str):
 
 @app.post("/alerts/compute/{building_id}")
 def compute_alerts(building_id: str):
-    result = alert_engine.compute_alerts(repo, building_id)
+    result = alerts.compute_alerts(repo, building_id)
     return result
 
 @app.get("/graph/sensor/{building_id}")
